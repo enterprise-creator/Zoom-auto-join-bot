@@ -40,10 +40,10 @@ def sign_in(meeting_id, meeting_password):
     pyautogui.click()
     pyautogui.write(meeting_password)
     pyautogui.press('enter')
+    
+# Read the csv file
 
-# Read the excel file
-
-df = pd.read_excel('timings.xlsx', index = False)
+df = pd.read_csv('timings.csv')
 
 
 while True:
@@ -54,8 +54,8 @@ while True:
     if now in str(df['timings']):
 
         row  = df.loc[df['timings']== now]
-        zm_id = str.(row.iloc[0,1])
-        zm_pwd = str.(row.iloc[0,2])
+        zm_id = str(row.iloc[0,1])
+        zm_pwd = str(row.iloc[0,2])
 
         sign_in(zm_id, zm_pwd)
 
